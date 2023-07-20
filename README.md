@@ -36,8 +36,8 @@ https://drive.google.com/drive/folders/1hhxOEh-6xK1rMFKuUkte8_4sBpItIzaK?usp=sha
 
 
 ## 画面遷移図
-![transition](/image/transition.png)
+![transition](/image/transition(rev).png)
 
 
 ## ER図　
-![er](/image/er(rev).png)
+![er](/image/er.png)
