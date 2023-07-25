@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
-  def edit
+  def create
     Project.create(project_params)
     redirect_to new_project_path
   end
