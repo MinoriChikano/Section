@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [:show, :destroy] 
+
   def index
     @projects = Project.all
   end
@@ -20,9 +22,18 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def destroy
+    @project.destroy
+    redirect_to projects_path, notice:"プロジェクトを削除しました"
+  end
+
   private
 
   def project_params
     params.require(:project).permit(:name)
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end
