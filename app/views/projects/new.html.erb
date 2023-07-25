@@ -1,2 +1,7 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<%= form_with(model: @project, local: true) do |form| %>
+  <div class="project_name">
+    <%= form.label :プロジェクト名 %>
+    <%= form.text_field :name %>
+  </div>
+  <%= form.submit %>
+<% end %>
