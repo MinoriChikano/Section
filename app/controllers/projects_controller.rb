@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to project_path, notice: "プロジェクトを作成しました"
+      redirect_to projects_path, notice: "プロジェクトを作成しました"
     else
       render :new
     end
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:id, :name)
   end
 
   def set_project
