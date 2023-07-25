@@ -1,0 +1,19 @@
+<%= form_with(model: @project, local: true) do |form| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @project.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="project_name">
+    <%= form.label :プロジェクト名 %>
+    <%= form.text_field :name %>
+  </div>
+  <%= form.submit %>
+<% end %>

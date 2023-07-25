@@ -11,8 +11,13 @@
   </head>
 
   <body>
+
+  <header>
+    <h1>Section</h1>
+    <p><%= link_to '+プロジェクト', new_project_path %></p>
+  </header>
     <% if user_signed_in? %>
-      <%= link_to "ブログ投稿", blogs_path %>
+      <%= link_to "マイページ", root_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>
