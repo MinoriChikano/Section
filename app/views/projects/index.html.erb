@@ -1,2 +1,13 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<h1>ユーザーのマイページ</h1>
+
+<table>
+  <tr>
+    <th>プロジェクト名</th>
+  </tr>
+
+<% @projects.each do |project| %>
+  <tr>
+    <td><%= project.name %></td>
+  </tr>
+<% end %>
+</table>
