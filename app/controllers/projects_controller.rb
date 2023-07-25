@@ -8,8 +8,12 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    Project.create(project_params)
-    redirect_to new_project_path
+    @project = Project.new(project_params)
+    if @project.save
+      redirect_to project_path, notice: "プロジェクトを作成しました"
+    else
+      render :new
+    end
   end
 
   def show
