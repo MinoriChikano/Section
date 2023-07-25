@@ -8,6 +8,8 @@
 <% @projects.each do |project| %>
   <tr>
     <td><%= project.name %></td>
+
+    <td><%= link_to 'メンバー', project_path(project.id) %></td>
   </tr>
 <% end %>
 </table>
