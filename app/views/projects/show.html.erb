@@ -4,4 +4,8 @@
 <p>種別</p>
 <p>メール</p>
 
+<p><%= @project.user.name %></p>
+<p><%= @project.user.admin %></p>
+<p><%= @project.user.email %></p>
+
 <%= link_to 'プロジェクトを削除する', project_path, method: :delete, data: { confirm: 'プロジェクトを削除してもよろしいですか？' }%>
