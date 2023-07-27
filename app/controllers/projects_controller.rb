@@ -10,8 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
-    @project.user_id = current_user.id
+    @project = current_user.projects.build(project_params)
     if @project.save
       redirect_to projects_path, notice: "プロジェクトを作成しました"
     else
