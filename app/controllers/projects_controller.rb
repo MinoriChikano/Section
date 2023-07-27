@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :destroy] 
-
+  before_action :authenticate_user!
   def index
     @projects = Project.all
   end
@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.build(project_params)
     if @project.save
       redirect_to projects_path, notice: "プロジェクトを作成しました"
     else
@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @projects = Project.all
     @project = Project.find(params[:id])
   end
 
