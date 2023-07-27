@@ -1,11 +1,17 @@
 <h1><%= @project.name %>のメンバー</h1>
-
-<p>名前</p>
-<p>種別</p>
-<p>メール</p>
-
-<p><%= @project.user.name %></p>
-<p><%= @project.user.admin %></p>
-<p><%= @project.user.email %></p>
+<table>
+  <tr>
+    <th>名前</th>
+    <th>種別</th>
+    <th>メール</th>
+  </tr>
+  <% @projects.each do |user| %>
+    <tr>
+      <td><%= @project.user.name %></td>
+      <td><%= @project.user.admin %></td>
+      <td><%= @project.user.email %></td>
+    </tr>
+  <% end %>
+</table>
 
 <%= link_to 'プロジェクトを削除する', project_path, method: :delete, data: { confirm: 'プロジェクトを削除してもよろしいですか？' }%>
