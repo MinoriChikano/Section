@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'audios/index'
+  get 'audios/new'
+  get 'audios/show'
+  get 'audios/edit'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'projects#index'
   resources :projects
