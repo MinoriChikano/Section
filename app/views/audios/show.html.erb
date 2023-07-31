@@ -1,6 +1,17 @@
-<h1>@audio.title</h1>
-<p><%= link_to '編集', audios_edit_path %></p>
+<h1><%= @audio.title %></h1>
+<p><%= link_to '編集', edit_audio_path(@audio.id) %></p>
+<p><%= link_to '削除', audio_path(@audio.id), method: :delete ,data: { confirm: '本当に削除しますか ?' } %></p>
 
-<p>@audio.bpm</p>
-<p>@audio.key</p>
-<p>@audio.comment</p>
+<p>キー:<%= @audio.key %></p>
+<p>BPM:<%= @audio.bpm %></p>
+<p>ファイル:
+  <%= link_to download_audio_path(@audio), data: { confirm: 'ダウンロードしますか?' } do %>
+    <%= @audio.file.url %>
+  <% end %>
+</p>
+
+<p>
+  <%= audio_tag @audio.file.url, :controls => true %>
+</p>
+<p>コメント:</p>
+<p><%= @audio.comment %></p>
