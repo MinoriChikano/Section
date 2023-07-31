@@ -1,4 +1,5 @@
 class AudiosController < ApplicationController
+  before_action :set_audio, only: [:show, :edit, :update]
   def index
     @audios = Audio.all
   end
@@ -20,5 +21,15 @@ class AudiosController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+
+  def audio_params
+    params.require(:audio).permit(:title, :bpm, :key, :comment)
+  end
+
+  def set_audio
+    @audio = Audio.find(params[:id])
   end
 end
