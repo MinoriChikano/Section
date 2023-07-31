@@ -1,38 +1,4 @@
 <h1>ファイルを登録</h1>
-<%= form_with(model: @audio, url:audios_path, local: true) do |f| %>
-  <% if @audio.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-    <% @audio.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
 
-  <div class="audio_title">
-    <%= f.label :タイトル %>
-    <%= f.text_field :title %>
-  </div>
+<%= render 'form', audio: @audio %>
 
-  <div class="audio_bpm">
-    <%= f.label :bpm %>
-    <%= f.text_field :bpm %>
-  </div>
-
-  <div class="audio_key">
-    <%= f.label :key %>
-    <%= f.text_field :key %>
-  </div>
-
-  <div class="audio_comment">
-    <%= f.label :comment %>
-    <%= f.text_field :comment %>
-  </div>
-
-  <div class="audio_file" %>
-    <%= f.file_field :file %>
-  </div> 
-
-  <%= f.submit %>
-<% end %>
