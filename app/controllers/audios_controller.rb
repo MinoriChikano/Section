@@ -1,15 +1,15 @@
 class AudiosController < ApplicationController
-  before_action :set_audio, only: [:show, :edit, :update]
+  before_action :set_audio, only: [:show, :edit, :update, :destroy]
   def index
     @audios = Audio.all
   end
 
   def new
-    @audios = Audio.new
+    @audio = Audio.new
   end
 
   def create
-    @audios = Audio.new
+    @audio = Audio.new(audio_params)
     if @audio.save
       redirect_to audios_path, notice: "ミュージックを作成しました"
     else
@@ -29,6 +29,11 @@ class AudiosController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @audio.destroy
+    redirect_to audios_path, notice: "削除しました"
   end
 
   private
