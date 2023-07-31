@@ -1,0 +1,20 @@
+<h1>プロジェクト名</h1>
+
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>キー</th>
+    <th>BPM</th>
+  </tr>
+
+<% @audios.each do |audio| %>
+  <tr>
+    <td><%= audio.title %></td>
+    <td><%= audio.key %></td>
+    <td><%= audio.bpm %></td>
+    <td><%= link_to '編集', edit_audio_path(audio.id) %></td>
+    <td><%= link_to '削除', audio_path(audio.id), method: :delete ,data: { confirm: '本当に削除しますか ?' } %></td>
+  </tr>
+<% end %>
+</table>
+
