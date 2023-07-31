@@ -36,10 +36,20 @@ class AudiosController < ApplicationController
     redirect_to audios_path, notice: "削除しました"
   end
 
+  def download
+    audio = Audio.find(download_params[:id])
+    file = audio.file
+    send_data(file.read, filename: "download#{File.extname(file.path)}")
+  end
+
   private
 
   def audio_params
-    params.require(:audio).permit(:title, :bpm, :key, :comment)
+    params.require(:audio).permit(:title, :bpm, :key, :comment, :file)
+  end
+
+  def download_params
+    params.permit(:id)
   end
 
   def set_audio
