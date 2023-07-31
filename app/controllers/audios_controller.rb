@@ -23,6 +23,14 @@ class AudiosController < ApplicationController
   def edit
   end
 
+  def update
+    if @audio.update(audio_params)
+      redirect_to audios_path, notice: "編集しました"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def audio_params

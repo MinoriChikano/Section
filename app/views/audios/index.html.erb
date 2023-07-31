@@ -1,2 +1,19 @@
-<h1>Audios#index</h1>
-<p>Find me in app/views/audios/index.html.erb</p>
+<h1>プロジェクト名</h1>
+
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>キー</th>
+    <th>BPM</th>
+  </tr>
+
+<% @audios.each do |audio| %>
+  <tr>
+    <td><%= audio.name %></td>
+    <td><%= audio.key %></td>
+    <td><%= audio.bpm %></td>
+    <td><%= link_to '編集', audios_edit_path %></td>
+  </tr>
+<% end %>
+</table>
+
