@@ -1,0 +1,2 @@
+$("#this_response_<%= @response.id %>").replaceWith("<%= j render 'responses/edit', audio: @audio, response: @response %>");
+$("#notice").html("<%= j flash[:notice] %>");
