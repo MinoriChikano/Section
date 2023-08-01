@@ -1,0 +1,7 @@
+<ul>
+  <% responses.each do |response| %>
+    <% if response.id.present? %>
+      <p><%= response.comment %></p>
+    <% end %>
+  <% end %>
+</ul>
