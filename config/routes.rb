@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'responses/create'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'projects#index'
   resources :projects
