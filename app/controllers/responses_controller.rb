@@ -1,8 +1,10 @@
 class ResponsesController < ApplicationController
   before_action :set_audio, only: [:create, :edit, :update]
+  before_action :authenticate_user!
   def create
     @audio = Audio.find(params[:audio_id])
     @response = @audio.responses.build(response_params)
+    @response.user_id = current_user.id
     respond_to do |format|
       if @response.save
         format.js { render :index }

@@ -2,6 +2,7 @@
 <p><%= link_to '編集', edit_audio_path(@audio.id) %></p>
 <p><%= link_to '削除', audio_path(@audio.id), method: :delete ,data: { confirm: '本当に削除しますか ?' } %></p>
 
+<p>ユーザー:<%= @audio.user.name %></p>
 <p>キー:<%= @audio.key %></p>
 <p>BPM:<%= @audio.bpm %></p>
 <p>ファイル:
@@ -11,7 +12,7 @@
 </p>
 
 <p>
-  <%= audio_tag @audio.file.url, :controls => true %>
+  <%= audio_tag @audio.file, :controls => true %>
 </p>
 <p>コメント:</p>
 <p><%= @audio.comment %></p>
