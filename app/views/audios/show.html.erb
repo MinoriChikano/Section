@@ -15,3 +15,11 @@
 </p>
 <p>コメント:</p>
 <p><%= @audio.comment %></p>
+
+<p>レスポンス</p>
+
+<div id="responses_area">
+  <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
+</div>
+
+<%= render partial: 'responses/form', locals: { response: @response, audio: @audio } %>

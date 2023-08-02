@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  audio: one
+  comment: MyText
+  file: MyText
+
+two:
+  audio: two
+  comment: MyText
+  file: MyText

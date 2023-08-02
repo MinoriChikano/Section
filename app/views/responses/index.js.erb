@@ -1,0 +1,3 @@
+$("#responses_area").html("<%= j(render 'responses/index', { responses: @response.audio.responses, audio: @response.audio }) %>");
+$("textarea").val('');
+$("#notice").html("<%= j flash[:notice] %>");

@@ -18,6 +18,8 @@ class AudiosController < ApplicationController
   end
 
   def show
+    @responses = @audio.responses
+    @response = @audio.responses.build
   end
 
   def edit
