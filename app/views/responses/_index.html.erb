@@ -2,6 +2,7 @@
   <% responses.each do |response| %>
     <% if response.id.present? %>
       <div class="response-comment" id ="this_response_<%= response.id %>"></div>
+      <p>ユーザー:<%= response.user.name %></p>
       <p><%= response.comment %></p>
       <p>ファイル:
         <%= link_to download_audio_response_path(audio, response), data: { confirm: 'ダウンロードしますか?' } do %>
