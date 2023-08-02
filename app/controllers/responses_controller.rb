@@ -42,10 +42,20 @@ class ResponsesController < ApplicationController
     end
   end
 
+  def download
+    response = Response.find(download_params[:id])
+    file = response.file
+    send_data(file.read, filename: "download#{File.extname(file.path)}")
+  end
+
   private
 
   def response_params
-    params.require(:response).permit(:comment)
+    params.require(:response).permit(:id, :comment, :file)
+  end
+
+  def download_params
+    params.permit(:id)
   end
 
   def set_audio

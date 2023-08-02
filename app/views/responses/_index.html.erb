@@ -3,6 +3,12 @@
     <% if response.id.present? %>
       <div class="response-comment" id ="this_response_<%= response.id %>"></div>
       <p><%= response.comment %></p>
+      <p>ファイル:
+        <%= link_to download_audio_response_path(audio, response), data: { confirm: 'ダウンロードしますか?' } do %>
+          <%= response.file.url %>
+          <p><%= audio_tag response.file, :controls => true %></p>  
+        <% end %>
+      </p>
       <p><%= link_to "コメント編集", edit_audio_response_path(audio, response), remote: true %></p>
       <p><%= link_to "コメント削除", audio_response_path(response.audio_id, response.id), method: :delete, remote: true,
       data: { confirm: "本当に削除しますか?"} %></p>

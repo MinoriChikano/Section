@@ -13,6 +13,9 @@
     <%= form.text_area :comment, id: "response_comment_#{audio.id}" %>
     <%= form.label :comment %>
   </div>
+  <div class="response_file" %>
+    <%= form.file_field :file %>
+  </div> 
   <div class="actions">
     <%= form.submit %>
   </div>
