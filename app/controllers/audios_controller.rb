@@ -1,5 +1,6 @@
 class AudiosController < ApplicationController
   before_action :set_audio, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   def index
     @audios = Audio.all
   end
@@ -9,7 +10,7 @@ class AudiosController < ApplicationController
   end
 
   def create
-    @audio = Audio.new(audio_params)
+    @audio = current_user.audios.build(audio_params)
     if @audio.save
       redirect_to audios_path, notice: "ミュージックを作成しました"
     else
