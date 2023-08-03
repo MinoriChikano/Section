@@ -4,4 +4,8 @@ class Project < ApplicationRecord
   has_many :members, through: :joins, source: :user
   has_many :audios
   validates :name, presence: true
+
+  def join_member(user)
+    assigns.create(user: user)
+  end
 end
