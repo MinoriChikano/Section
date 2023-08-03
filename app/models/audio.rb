@@ -1,5 +1,6 @@
 class Audio < ApplicationRecord
   belongs_to :user
+  belongs_to :project
   has_many :responses, dependent: :destroy
   validates :title, presence: true
   validates :title, length: { maximum: 30 }
