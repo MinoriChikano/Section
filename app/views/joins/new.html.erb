@@ -1,9 +1,11 @@
 <div>
-  <h5>ユーザーをプロジェクトに追加する</h5>
-  <%= form_with model: :join, scope: :post, url: projects_path(@project), local: true do |form| %>
+  <h5>ユーザーを<%= @project.name %>に追加する</h5>
+  <%= form_with scope: :post, url: joins_path, local: true do |f| %>
+    <%= hidden_field :project_id, @project.id %>
     <div>
+      メール:
       <%= text_field_tag :email, '' %>
-      <%= f.submit %>
     </div>
+    <%= f.submit "登録する" %>
   <% end %>
 </div>

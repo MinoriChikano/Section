@@ -6,6 +6,6 @@ class Project < ApplicationRecord
   validates :name, presence: true
 
   def join_member(user)
-    assigns.create(user: user)
+    Joins.create(user: user)
   end
 end
