@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   has_many :audios
   validates :name, presence: true
 
-  def join_member(user)
-    Joins.create(user: user)
-  end
+  # def join_member(user)
+  #   Joins.create(user: user)
+  # end
 end
