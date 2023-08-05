@@ -2,16 +2,25 @@
 <table>
   <tr>
     <th>名前</th>
-    <th>種別</th>
     <th>メール</th>
+    <th>タイプ</th>
   </tr>
   <% @projects.each do |user| %>
     <tr>
       <td><%= @project.user.name %></td>
-      <td><%= @project.user.admin %></td>
       <td><%= @project.user.email %></td>
+      <td>オーナー</td>
+    </tr>
+  <% end %>
+  
+  <% @project.joins.each do |join| %>
+    <tr>
+      <td><%= join.user.name %></td>
+      <td><%= join.user.email %></td>
+      <td>メンバー</td>
     </tr>
   <% end %>
 </table>
 
+<%= link_to 'ユーザーを追加する', new_join_path(project_id: @project.id) %>
 <%= link_to 'プロジェクトを削除する', project_path, method: :delete, data: { confirm: 'プロジェクトを削除してもよろしいですか？' }%>
