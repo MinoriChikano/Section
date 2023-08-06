@@ -1,13 +1,13 @@
-<%= form_with(model: @audio, local: true) do |f| %>
+<%= form_with(model: [@audio], local: true) do |f| %>
   <% if @audio.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-    <% @audio.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+    <div id="error_explanation">
+      <ul>
+      <% @audio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
-<% end %>
+  <% end %>
 
   <div class="audio_title">
     <%= f.label :タイトル %>
@@ -16,17 +16,17 @@
 
   <div class="audio_key">
     <%= f.label :key %>
-    <%= f.text_field :key %>
+    <%= f.select :key, %i(C C♯ D D♯ E F F♯ G G♯ A A♯ B Am A♯m Bm Cm C♯m Dm D♯m Em Fm F♯m Gm G♯m), {include_blank: 'キー'} %>
   </div>
 
   <div class="audio_bpm">
     <%= f.label :bpm %>
-    <%= f.text_field :bpm %>
+    <%= f.number_field :bpm, in: 30..255 %>
   </div>
 
   <div class="audio_comment">
-    <%= f.label :comment %>
-    <%= f.text_field :comment %>
+    <%= f.label :コメント %>
+    <%= f.text_area :comment %>
   </div>
 
   <div class="audio_file" %>
