@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :audios
   has_many :responses
   has_many :joins, dependent: :destroy
-  has_many :members, through: :joins, source: :user
+  has_many :join_projects, through: :joins, source: :project
+  validates :email, presence: true
 
   def self.find_by_email(email)
     user = find_by(email: email)
