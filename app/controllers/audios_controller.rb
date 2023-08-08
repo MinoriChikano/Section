@@ -7,7 +7,6 @@ class AudiosController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    # binding.pry
     @audio = Audio.new
   end
 
