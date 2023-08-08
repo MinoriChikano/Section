@@ -1,5 +1,5 @@
 <h1><%= @project.name %>のメンバー</h1>
-
+<%= link_to 'アップロード', new_audio_path(project_id: @project.id) %>
 <table>
   <tr>
     <th>名前</th>

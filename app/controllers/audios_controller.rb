@@ -6,6 +6,7 @@ class AudiosController < ApplicationController
   end
 
   def new
+    @project = Project.find(params[:project_id])
     @audio = Audio.new
   end
 
@@ -48,7 +49,7 @@ class AudiosController < ApplicationController
   private
 
   def audio_params
-    params.require(:audio).permit(:title, :bpm, :key, :comment, :file)
+    params.require(:audio).permit(:title, :bpm, :key, :comment, :file, :project_id)
   end
 
   def download_params
