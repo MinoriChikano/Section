@@ -6,11 +6,14 @@ class AudiosController < ApplicationController
   end
 
   def new
+    @project = Project.find(params[:project_id])
+    # binding.pry
     @audio = Audio.new
   end
 
   def create
     @audio = current_user.audios.build(audio_params)
+    # @project = 
     if @audio.save
       redirect_to audios_path, notice: "ミュージックを作成しました"
     else
@@ -48,7 +51,7 @@ class AudiosController < ApplicationController
   private
 
   def audio_params
-    params.require(:audio).permit(:title, :bpm, :key, :comment, :file)
+    params.require(:audio).permit(:title, :bpm, :key, :comment, :file, :project_id)
   end
 
   def download_params
