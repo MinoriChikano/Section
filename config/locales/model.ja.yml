@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      project: プロジェクト
+      audio: 音声
+      user: ユーザー
+      comment: コメント
+      response: レスポンス
+      join: 参加
+    attributes:
+      project:
+        name: 名前
+        content: 内容
+      user:
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログ
+      audio:
+        title: タイトル
+        key: キー
+        file: ファイル
