@@ -1,17 +1,16 @@
 <h1><%= @project.name %>のメンバー</h1>
+
 <table>
   <tr>
     <th>名前</th>
     <th>メール</th>
     <th>タイプ</th>
   </tr>
-  <% @projects.each do |user| %>
-    <tr>
-      <td><%= @project.user.name %></td>
-      <td><%= @project.user.email %></td>
-      <td>オーナー</td>
-    </tr>
-  <% end %>
+  <tr>
+    <td><%= @project.user.name %></td>
+    <td><%= @project.user.email %></td>
+    <td>オーナー</td>
+  </tr>
   
   <% @project.joins.each do |join| %>
     <tr>
