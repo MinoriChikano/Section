@@ -1,8 +1,13 @@
 class AudiosController < ApplicationController
-  before_action :set_audio, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_audio, only: [:show, :edit, :update, :destroy]
+  before_action :other_user, only: [:edit, :update, :destroy]
+  before_action :outsider, only: [:show, :edit, :update, :destroy]
+  before_action :unauthorized_user, only: :index
+
   def index
-    @audios = Audio.all
+    @project = Project.find(params[:project_id])
+    @audios = @project.audios
   end
 
   def new
@@ -13,7 +18,7 @@ class AudiosController < ApplicationController
   def create
     @audio = current_user.audios.build(audio_params)
     if @audio.save
-      redirect_to audios_path, notice: "ミュージックを作成しました"
+      redirect_to audios_path(project_id: @audio.project_id), notice: "ミュージックを作成しました"
     else
       render :new
     end
@@ -29,7 +34,7 @@ class AudiosController < ApplicationController
 
   def update
     if @audio.update(audio_params)
-      redirect_to audios_path, notice: "編集しました"
+      redirect_to audios_path(project_id: @audio.project_id), notice: "編集しました"
     else
       render :edit
     end
@@ -37,7 +42,7 @@ class AudiosController < ApplicationController
 
   def destroy
     @audio.destroy
-    redirect_to audios_path, notice: "削除しました"
+    redirect_to audios_path(project_id: @audio.project_id), notice: "編集しました"
   end
 
   def download
@@ -58,5 +63,27 @@ class AudiosController < ApplicationController
 
   def set_audio
     @audio = Audio.find(params[:id])
+  end
+  
+  def outsider
+    unless current_user.id == @audio.project.user.id || @audio.project.members.pluck(:id).include?(current_user.id) 
+      flash[:notice] = "権限がありません"
+      redirect_to audios_path(project_id: @audio.project_id)
+    end
+  end
+
+  def unauthorized_user
+    project = Project.find(params[:project_id])
+    unless current_user == project.user || project.members.include?(current_user)
+      flash[:alert] = "権限がありません"
+      redirect_to projects_path
+    end
+  end
+
+  def other_user
+    unless current_user.id == @audio.user.id
+      flash[:notice] = "権限がありません"
+      redirect_to audios_path(project_id: @audio.project_id)
+    end
   end
 end

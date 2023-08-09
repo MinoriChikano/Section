@@ -1,4 +1,4 @@
-<h1>プロジェクト名</h1>
+<h1><%= @project.name %></h1>
 
 <table>
   <tr>
@@ -6,15 +6,19 @@
     <th>キー</th>
     <th>BPM</th>
   </tr>
-
-<% @audios.each do |audio| %>
-  <tr>
-    <td><%= audio.title %></td>
-    <td><%= audio.key %></td>
-    <td><%= audio.bpm %></td>
-    <td><%= link_to '編集', edit_audio_path(audio.id) %></td>
-    <td><%= link_to '削除', audio_path(audio.id), method: :delete ,data: { confirm: '本当に削除しますか ?' } %></td>
-  </tr>
-<% end %>
+    <% @audios.each do |audio| %>
+    <tr>
+      <td><%= link_to audio.title, audio_path(audio.id) %></td>
+      <td><%= audio.key %></td>
+      <td><%= audio.bpm %></td>
+      <% if current_user == audio.user %>
+        <td><%= link_to '編集', edit_audio_path(audio.id) %></td>
+        <td><%= link_to '削除', audio_path(audio.id), method: :delete ,data: { confirm: '本当に削除しますか ?' } %></td>
+      <% else %>
+        <td></td>
+        <td></td>
+      <% end %>
+    </tr>
+    <% end %>
 </table>
 

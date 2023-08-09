@@ -1,6 +1,9 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :destroy] 
   before_action :authenticate_user!
+  before_action :set_project, only: [:show, :destroy] 
+  before_action :outsider, only: [:show]
+  before_action :reguler_member, only: [:destroy]
+
   def index
     @projects = Project.all
   end
@@ -35,5 +38,19 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def outsider
+    unless current_user.id == @project.user.id || @project.members.include?(current_user)
+      flash[:notice] = "権限がありません"
+      redirect_to projects_path
+    end
+  end
+
+  def reguler_member
+    unless current_user.id == @project.user.id
+      flash[:notice] = "権限がありません"
+      redirect_to projects_path
+    end
   end
 end
