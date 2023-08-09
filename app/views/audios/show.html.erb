@@ -1,7 +1,11 @@
 <h1><%= @audio.title %></h1>
-<p><%= link_to '編集', edit_audio_path(@audio.id) %></p>
-<p><%= link_to '削除', audio_path(@audio.id), method: :delete ,data: { confirm: '本当に削除しますか ?' } %></p>
-
+<% if current_user == @audio.user %>
+  <p><%= link_to '編集', edit_audio_path(@audio.id) %></p>
+  <p><%= link_to '削除', audio_path(@audio.id), method: :delete ,data: { confirm: '本当に削除しますか ?' } %></p>
+<% else %>
+  <p></p>
+  <p></p>
+<% end %>
 <p>ユーザー:<%= @audio.user.name %></p>
 <p>キー:<%= @audio.key %></p>
 <p>BPM:<%= @audio.bpm %></p>
