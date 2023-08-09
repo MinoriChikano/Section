@@ -2,7 +2,8 @@ class AudiosController < ApplicationController
   before_action :set_audio, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   def index
-    @audios = Audio.all
+    @project = Project.find(params[:project_id])
+    @audios = @project.audios
   end
 
   def new
@@ -13,7 +14,7 @@ class AudiosController < ApplicationController
   def create
     @audio = current_user.audios.build(audio_params)
     if @audio.save
-      redirect_to audios_path, notice: "ミュージックを作成しました"
+      redirect_to audios_path(project_id: @audio.project_id), notice: "ミュージックを作成しました"
     else
       render :new
     end
@@ -29,7 +30,7 @@ class AudiosController < ApplicationController
 
   def update
     if @audio.update(audio_params)
-      redirect_to audios_path, notice: "編集しました"
+      redirect_to audios_path(project_id: @audio.project_id), notice: "編集しました"
     else
       render :edit
     end
@@ -37,7 +38,7 @@ class AudiosController < ApplicationController
 
   def destroy
     @audio.destroy
-    redirect_to audios_path, notice: "削除しました"
+    redirect_to audios_path(project_id: @audio.project_id), notice: "編集しました"
   end
 
   def download

@@ -10,7 +10,7 @@
     <% if current_user == project.user %>
       <td><%= project.name %></td>
       <td><%= link_to 'メンバー', project_path(project.id) %></td>
-      <td><%= link_to 'ミュージック', audios_path %></td> 
+      <td><%= link_to 'ミュージック', audios_path(project_id: project.id) %></td> 
     <% else %>
       <td></td>
       <td></td>
@@ -22,7 +22,7 @@
   <tr>
     <td><%= project.name %></td>
     <td><%= link_to 'メンバー', project_path(project.id) %></td> 
-    <td><%= link_to 'ミュージック', audios_path %></td> 
+    <td><%= link_to 'ミュージック', audios_path(project_id: project.id)%></td> 
   </tr>
 <% end %>
 
