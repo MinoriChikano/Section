@@ -1,6 +1,7 @@
 class AudiosController < ApplicationController
-  before_action :set_audio, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_audio, only: [:show, :edit, :update, :destroy]
+  before_action :other_user, only: [:edit, :update, :destroy]
   before_action :outsider, only: [:show, :edit, :update, :destroy]
   before_action :unauthorized_user, only: :index
 
@@ -76,6 +77,13 @@ class AudiosController < ApplicationController
     unless current_user == project.user || project.members.include?(current_user)
       flash[:alert] = "権限がありません"
       redirect_to projects_path
+    end
+  end
+
+  def other_user
+    unless current_user.id == @audio.user.id
+      flash[:notice] = "権限がありません"
+      redirect_to audios_path(project_id: @audio.project_id)
     end
   end
 end
