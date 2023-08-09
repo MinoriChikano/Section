@@ -10,9 +10,12 @@
           <p><%= audio_tag response.file, :controls => true %></p>  
         <% end %>
       </p>
-      <p><%= link_to "コメント編集", edit_audio_response_path(audio, response), remote: true %></p>
-      <p><%= link_to "コメント削除", audio_response_path(response.audio_id, response.id), method: :delete, remote: true,
-      data: { confirm: "本当に削除しますか?"} %></p>
+      <% if current_user == response.user %>
+        <p><%= link_to "コメント編集", edit_audio_response_path(audio, response), remote: true %></p>
+        <p><%= link_to "コメント削除", audio_response_path(response.audio_id, response.id), method: :delete, remote: true,
+        data: { confirm: "本当に削除しますか?"} %></p>
+      <% else %>
+      <% end %>
     <% end %>
   <% end %>
 </ul>
