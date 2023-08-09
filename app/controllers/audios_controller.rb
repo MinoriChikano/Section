@@ -1,6 +1,9 @@
 class AudiosController < ApplicationController
   before_action :set_audio, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :outsider, only: [:show, :edit, :update, :destroy]
+  before_action :unauthorized_user, only: :index
+
   def index
     @project = Project.find(params[:project_id])
     @audios = @project.audios
@@ -59,5 +62,20 @@ class AudiosController < ApplicationController
 
   def set_audio
     @audio = Audio.find(params[:id])
+  end
+  
+  def outsider
+    unless current_user.id == @audio.project.user.id || @audio.project.members.pluck(:id).include?(current_user.id) 
+      flash[:notice] = "権限がありません"
+      redirect_to audios_path(project_id: @audio.project_id)
+    end
+  end
+
+  def unauthorized_user
+    project = Project.find(params[:project_id])
+    unless current_user == project.user || project.members.include?(current_user)
+      flash[:alert] = "権限がありません"
+      redirect_to projects_path
+    end
   end
 end
