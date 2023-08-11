@@ -1,4 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
+  body {
+    background-color: #EAEAEA;
+  }
 
  .centered-form {
     display: flex;
@@ -8,8 +11,20 @@
     height: 80vh;
   }
 
+  .centered-logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
   .field {
     margin-bottom: 1em;
+  }
+
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="password"] {
+    height: 40px;
   }
 
   .guest_actions_container {
@@ -19,7 +34,6 @@
   }
   
   .guest_actions {
-    margin-right: 90px;
+    font-size: 15px;
+    margin-right: 290px;
   }
-
-  
