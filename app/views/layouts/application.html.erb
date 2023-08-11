@@ -14,9 +14,8 @@
 
   <header>
     <h1>Section</h1>
-    <p><%= link_to '+プロジェクト', new_project_path %></p>
-    <p><%= link_to 'アップロード', new_audio_path %></p>
-  </header>
+      <%= link_to '+プロジェクト', new_project_path %>
+      <%= link_to 'アップロード', new_audio_path %>
     <% if user_signed_in? %>
       <%= link_to "マイページ", root_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -24,6 +23,7 @@
       <%= link_to "新規登録", new_user_registration_path %>
       <%= link_to "ログイン", new_user_session_path %>
     <% end %>
+  </header>
 
   <% if notice %>
     <p class="alert alert-notice"><%= notice %></p>

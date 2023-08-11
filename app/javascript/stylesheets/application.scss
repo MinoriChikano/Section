@@ -1,1 +1,25 @@
 @import '~bootstrap/scss/bootstrap';
+
+ .centered-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+  }
+
+  .field {
+    margin-bottom: 1em;
+  }
+
+  .guest_actions_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .guest_actions {
+    margin-right: 90px;
+  }
+
+  
