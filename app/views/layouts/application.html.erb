@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Section</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Section</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body>
 
-  <header>
-    <h1>Section</h1>
+<header class="main-header">
+  <div class="wrapper main-header__wrapper">
+    <a class="header-logo"><%= image_tag 'header_logo.png', width: "150px", height: "53px" %></a>
+    <div class="left-links">
       <%= link_to '+プロジェクト', new_project_path %>
       <%= link_to 'アップロード', new_audio_path %>
-    <% if user_signed_in? %>
+    </div>
+
+    <div class="right-links">
+      <% if user_signed_in? %>
       <%= link_to "マイページ", root_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
+      <% else %>
       <%= link_to "新規登録", new_user_registration_path %>
       <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
-  </header>
+      <% end %>
+    </div>
+  </div>
+</header>
 
-  <% if notice %>
-    <p class="alert alert-notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-error"><%= alert %></p>
-  <% end %>
-  
-    <%= yield %>
-  </body>
+<% if notice %>
+  <p class="alert alert-notice"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-error"><%= alert %></p>
+<% end %>
+
+<%= yield %>
+</body>
 </html>
+

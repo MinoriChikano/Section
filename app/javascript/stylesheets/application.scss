@@ -3,6 +3,45 @@
     background-color: #EAEAEA;
   }
 
+  .main-header {
+    width: 100%;
+    background-color: black;
+    height: 80px;
+  }
+
+  .header-logo {
+    padding: 10px 50px; 
+  }
+
+  .main-header__wrapper {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .left-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .left-links a {
+    color: white
+  } 
+
+  .right-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-left: auto;
+    padding-right: 60px;
+  }
+
+  .right-links a {
+    color: white
+  }
+
  .centered-form {
     display: flex;
     flex-direction: column;
