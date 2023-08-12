@@ -1,19 +1,26 @@
-<%= form_with(model: @project, local: true) do |form| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @project.errors.count %>件のエラーがあります。</h2>
-      <ul>
+<div class="project_form_container">
+  <%= form_with(model: @project, local: true) do |f| %>
+    <h4 class="new_project">新規プロジェクトを作成</h4>
+    
+    <% if @project.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @project.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="project_form_blank"></div>
+
+    <div class="project_name">
+      <%= f.text_field :name, size: "60", style: "border: none; height: 40px;", placeholder: "プロジェクト名" %>
     </div>
-  <% end %>
 
-  <div class="project_name">
-    <%= form.label :プロジェクト名 %>
-    <%= form.text_field :name %>
-  </div>
-  <%= form.submit %>
-<% end %>
+    <div class="project_form_blank"></div>
+    
+    <%= f.submit "作成する", class: "btn btn-danger" %>
+  <% end %>
+</div>
+

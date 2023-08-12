@@ -64,7 +64,7 @@
 
   .field input[type="text"],
   .field input[type="email"],
-  .field input[type="password"] {
+  .field input[type="password"]{
     height: 40px;
   }
 
@@ -91,4 +91,42 @@
     display: flex;
     justify-content: center;
     align-items: center; 
+  }
+
+  .audio_form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  .new_file {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .audio_form_blank {
+    margin-top: 30px;
+  }
+
+  .audio_bt_blank {
+    margin-top: 10px;
+  }
+
+  .project_form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+
+  .new_project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project_form_blank {
+    margin-top: 20px;
   }
