@@ -1,11 +1,20 @@
-<div>
-  <h5>ユーザーを<%= @project.name %>に追加する</h5>
-  <%= form_with scope: :post, url: joins_path, local: true do |f| %>
-    <%= hidden_field :project_id, @project.id %>
-    <div>
-      メール:
-      <%= text_field_tag :email %>
-    </div>
-    <%= f.submit "登録する" %>
-  <% end %>
+<div class="join_form_container">
+  <div>
+    <h5 class = "new_join">ユーザーを<%= @project.name %>に追加する</h5>
+    
+    <div class = "join_blank"></div>
+
+    <%= form_with scope: :post, url: joins_path, local: true do |f| %>
+      <%= hidden_field :project_id, @project.id %>
+      <div>
+        <%= text_field_tag :email, nil, placeholder: 'メールアドレスを入力してください',size:50, class: "join_form_height" %>
+      </div>
+
+      <div class = "join_blank"></div>
+
+      <div class = join_submit_bt> 
+        <%= f.submit "登録する", class:"btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 </div>

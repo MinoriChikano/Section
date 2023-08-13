@@ -130,3 +130,26 @@
   .project_form_blank {
     margin-top: 20px;
   }
+
+  .join_form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+
+  .new_join {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .join_blank {
+    margin-top: 30px;
+  }
+
+  .join_form_height {
+    height: 40px;
+    border: none;
+    outline: none;
+  }
