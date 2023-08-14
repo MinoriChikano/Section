@@ -1,34 +1,35 @@
-<div class = 'project_member_container'>
-<h3 class = 'project_name'><%= @project.name %>のメンバー</h3>
-<%= link_to 'アップロード', new_audio_path(project_id: @project.id) %>
-<br>
-<div class = 'project_member'>
-<table>
-  <tr>
-    <th class = 'user_info_space'>名前</th>
-    <th class = 'user_info_space'>メール</th>
-    <th class = 'user_info_space'>タイプ</th>
-  </tr>
-  <tr>
-    <td><%= @project.user.name %></td>
-    <td><%= @project.user.email %></td>
-    <td>オーナー</td>
-  </tr>
-  
-  <% @project.joins.each do |join| %>
-    <tr>
-      <td><%= join.user.name %></td>
-      <td><%= join.user.email %></td>
-      <td>メンバー</td>
-    </tr>
+<div class='project_member_container'>
+  <h3 class='project_name'><%= @project.name %>のメンバー</h3>
+  <%= link_to 'アップロード', new_audio_path(project_id: @project.id) %>
+  <br>
+  <div class='project_member'>
+    <table>
+      <tr>
+        <th class='user_info_space'>名前</th>
+        <th class='user_info_space'>メール</th>
+        <th class='user_info_space'>タイプ</th>
+      </tr>
+      <tr>
+        <td><%= @project.user.name %></td>
+        <td><%= @project.user.email %></td>
+        <td>オーナー</td>
+      </tr>
+      
+      <% @project.joins.each do |join| %>
+        <tr>
+          <td><%= join.user.name %></td>
+          <td><%= join.user.email %></td>
+          <td>メンバー</td>
+        </tr>
+      <% end %>
+    </table>
+    <br>
+  </div>
+  <% if current_user == @project.user %>
+    <div class="project_bt_container">
+      <p class="btn btn-outline-primary"><%= link_to 'ユーザーを追加する', new_join_path(project_id: @project.id) %></p>
+      <p class="btn btn-outline-danger"><%= link_to 'プロジェクトを削除する', project_path, method: :delete, data: { confirm: 'プロジェクトを削除してもよろしいですか？' } %></p>
+    </div>
   <% end %>
-</table>
-<br>
 </div>
-<%if current_user == @project.user %>
-<div class="project_bt_container">
-  <p class ="btn btn-outline-primary"><%= link_to 'ユーザーを追加する', new_join_path(project_id: @project.id) %></p>
-  <p class ="btn btn-outline-danger"><%= link_to 'プロジェクトを削除する', project_path, method: :delete, data: { confirm: 'プロジェクトを削除してもよろしいですか？' }%></p>
-</div>
-  <% end %>
-</div>
+
