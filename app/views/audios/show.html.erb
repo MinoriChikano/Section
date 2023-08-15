@@ -4,12 +4,20 @@
     <p>ユーザー: <%= @audio.user.name %></p>
     <p>キー: <%= @audio.key %></p>
     <p>テンポ: <%= @audio.bpm %></p>
-    <p>ファイル:<%= @audio.file %></p>
+    <p>ファイル:<%= @audio.file.url %></p>
     <p class = "download_tag"><%= link_to download_audio_path(@audio), data: { confirm: 'ダウンロードしますか?' }, class: "btn btn-primary", download: @audio.file do %>
       DOWNLOAD
     <% end %></p>
     <p>コメント:</p>
     <p><%= @audio.comment %></p>
+
+    <h5>レスポンス</h5>
+    <p class="response_form">
+      <%= render partial: 'responses/form', locals: { response: @response, audio: @audio } %>
+    </p>
+    <p id="responses_area">
+      <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
+    </p>
   </div>
 
   <div class="audio_options">
@@ -22,12 +30,4 @@
     <div class="audio_blank"></div>
     <%= audio_tag @audio.file, controls: true %>
   </div>
-</div>
-
-<div class="response_container">
-  <p>レスポンス</p>
-  <div id="responses_area">
-    <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
-  </div>
-  <%= render partial: 'responses/form', locals: { response: @response, audio: @audio } %>
 </div>
