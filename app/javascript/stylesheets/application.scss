@@ -28,6 +28,15 @@
     margin-top: 20px; 
   }
 
+  .under_part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 120px;
+    margin-top: 40px; 
+  }
+
   .main-header {
     width: 100%;
     background-color: black;
