@@ -1,3 +1,4 @@
+<div class = response_index>
 <% responses.each do |response| %>
   <% if response.id.present? %>
     <div class="response-comment" id="this_response_<%= response.id %>"></div>
@@ -22,3 +23,4 @@
     </div>
   <% end %>
 <% end %>
+</div>

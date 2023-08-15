@@ -1,32 +1,31 @@
-<br>
 <div class="project_name_center_content">
+  <h2 class="audio_project_name"><%= @project.name %></h2>
 
-<h2 class = "audio_project_name"><%= @project.name %></h2>
-<br>
-<table>
-  <tr>
+  <br>
+
+  <table>
     <% @audios.each do |audio| %>
       <div class="card border-secondary mb-3" style="width: 50rem;">
-      <div class="card-body  d-flex flex-row align-items-start">
-        <div class="flex-grow-1">
-          <h5 class="card-title"><%= link_to audio.title, audio_path(audio.id) %></h5>
-          <h7 class="card-text">キー: <%= audio.key %></h7>
-          <h7 class="card-text">テンポ: <%= audio.bpm %></h7>
-        </div>
-    
-        <% if current_user == audio.user %>
-        <div class="btn-group" aria-label="Small button group">
-          <a href="#" class="card-link"><%= link_to '編集', edit_audio_path(audio.id),class: "btn btn-outline-primary" %></a>
-          <a href="#" class="card-link"><%= link_to '削除', audio_path(audio.id), method: :delete ,data: { confirm: '本当に削除しますか?' },class: "btn btn-outline-primary" %></a>
-        </div>
+        <div class="card-body d-flex flex-row align-items-start">
+          <div class="flex-grow-1">
+            <h5 class="card-title"><%= link_to audio.title, audio_path(audio.id) %></h5>
+            <h7 class="card-text">キー: <%= audio.key %></h7>
+            <h7 class="card-text">テンポ: <%= audio.bpm %></h7>
+          </div>
+
+          <% if current_user == audio.user %>
+            <div class="btn-group" aria-label="Small button group">
+              <a href="#" class="card-link"><%= link_to '編集', edit_audio_path(audio.id), class: "btn btn-outline-primary" %></a>
+              <a href="#" class="card-link"><%= link_to '削除', audio_path(audio.id), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "btn btn-outline-primary" %></a>
+            </div>
           <% else %>
-          <td></td>
-          <td></td>
-        <% end %>
+            <td></td>
+            <td></td>
+          <% end %>
+        </div>
       </div>
-    </div>
     <% end %>
-  </tr>
-</table>
+  </table>
 </div>
+
 

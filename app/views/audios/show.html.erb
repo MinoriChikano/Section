@@ -12,12 +12,12 @@
     <p><%= @audio.comment %></p>
 
     <h5>レスポンス</h5>
-    <p class="response_form">
+    <div class="response_form">
       <%= render partial: 'responses/form', locals: { response: @response, audio: @audio } %>
-    </p>
-    <p id="responses_area">
+    </div>
+    <div id="responses_area">
       <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
-    </p>
+    </div>
   </div>
 
   <div class="audio_options">
