@@ -6,6 +6,28 @@
     min-height: 100vh;
   }
 
+  .upper_part_background {
+    background-color: #FAFF27;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+  }
+
+  .top_logo {
+    margin-bottom: 30px;
+    margin-top: 50px;
+  }
+
+  .top_content {
+    font-size: 26px;
+    color: #6c757d;
+    line-height: 1.5;
+    padding-left: 30px;
+    margin-top: 20px; 
+  }
+
   .main-header {
     width: 100%;
     background-color: black;
