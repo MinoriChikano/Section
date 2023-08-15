@@ -1,34 +1,35 @@
-<h2><%= t('.sign_up') %></h2>
+<div class="centered-form">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= image_tag 'app_logo_log_in.png', class: "centered-logo",width: "250px", height: "141px" %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+  <h5><%= t('.sign_up') %></h5>
+  
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.text_field :name, autofocus: true, autocomplete: "name",size: "50",style: "border: none", placeholder: "名前" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",size: "50",style: "border: none", placeholder: "メールアドレス" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <% if @minimum_password_length %>
+        <em><%= t(' ', count: @minimum_password_length) %></em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password",size: "50",style: "border: none", placeholder: "パスワード(6文字以上)" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit t('.sign_up') %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",size: "50",style: "border: none", placeholder: "パスワード確認" %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="actions">
+      <%= f.submit "登録", class: "btn btn-secondary",style: "width: 100%; height: 40px;" %>
+    </div>
+  <% end %>
+
+</div>
+

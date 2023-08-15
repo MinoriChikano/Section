@@ -1,34 +1,38 @@
-<h2><%= t('.sign_in') %></h2>
+<div class="centered-form">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= image_tag 'app_logo_log_in.png', class: "centered-logo",width: "250px", height: "141px" %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <h5><%= t('.sign_in') %></h5>
+  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",size: "50",style: "border: none", placeholder: "メールアドレス" %>
+    </div>
 
-  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "current-password",size: "50",style: "border: none", placeholder: "パスワード(6文字以上)" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit t('.sign_in'), class: "btn btn-secondary",style: "width: 100%; height: 40px;" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
+    <% end %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit t('.sign_in') %>
-  </div>
-<% end %>
+  <div class="guest_actions_container">
+    <div class="guest_actions">
+      <%= link_to 'ゲストはこちら', users_guest_sign_in_path, method: :post %>
+    </div>
 
-  <div class="actions">
-    <%= link_to 'ゲスト', users_guest_sign_in_path, method: :post %>
+    <div class="guest_actions">
+      <%= link_to 'ゲスト管理者はこちら', users_guest_admin_sign_in_path, method: :post %>
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= link_to 'ゲスト管理者', users_guest_admin_sign_in_path, method: :post %>
-  </div>
-
-<%= render "devise/shared/links" %>

@@ -1,30 +1,33 @@
-<h1><%= @audio.title %></h1>
-<% if current_user == @audio.user %>
-  <p><%= link_to '編集', edit_audio_path(@audio.id) %></p>
-  <p><%= link_to '削除', audio_path(@audio.id), method: :delete ,data: { confirm: '本当に削除しますか ?' } %></p>
-<% else %>
-  <p></p>
-  <p></p>
-<% end %>
-<p>ユーザー:<%= @audio.user.name %></p>
-<p>キー:<%= @audio.key %></p>
-<p>BPM:<%= @audio.bpm %></p>
-<p>ファイル:
-  <%= link_to download_audio_path(@audio), data: { confirm: 'ダウンロードしますか?' } do %>
-    <%= @audio.file.url %>
-  <% end %>
-</p>
+<div class="audio_data_container">
+  <div class="audio_detail">
+    <h1 class="audio_title"><%= @audio.title %></h1>
+    <p>ユーザー: <%= @audio.user.name %></p>
+    <p>キー: <%= @audio.key %></p>
+    <p>テンポ: <%= @audio.bpm %></p>
+    <p>ファイル:<%= @audio.file.url %></p>
+    <p class = "download_tag"><%= link_to download_audio_path(@audio), data: { confirm: 'ダウンロードしますか?' }, class: "btn btn-primary", download: @audio.file do %>
+      DOWNLOAD
+    <% end %></p>
+    <p>コメント:</p>
+    <p><%= @audio.comment %></p>
 
-<p>
-  <%= audio_tag @audio.file, :controls => true %>
-</p>
-<p>コメント:</p>
-<p><%= @audio.comment %></p>
+    <h5>レスポンス</h5>
+    <div class="response_form">
+      <%= render partial: 'responses/form', locals: { response: @response, audio: @audio } %>
+    </div>
+    <div id="responses_area">
+      <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
+    </div>
+  </div>
 
-<p>レスポンス</p>
-
-<div id="responses_area">
-  <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
+  <div class="audio_options">
+    <div class="audio_edit_delete">
+      <% if current_user == @audio.user %>
+        <a><%= link_to '編集', edit_audio_path(@audio.id) %></a>
+        <a><%= link_to '削除', audio_path(@audio.id), method: :delete, data: { confirm: '本当に削除しますか?' } %></a>
+      <% end %>
+    </div>
+    <div class="audio_blank"></div>
+    <%= audio_tag @audio.file, controls: true %>
+  </div>
 </div>
-
-<%= render partial: 'responses/form', locals: { response: @response, audio: @audio } %>

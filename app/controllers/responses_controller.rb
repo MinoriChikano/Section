@@ -47,7 +47,7 @@ class ResponsesController < ApplicationController
   def download
     response = Response.find(download_params[:id])
     file = response.file
-    send_data(file.read, filename: "download#{File.extname(file.path)}")
+    send_data(file.read, filename: "#{response.file}#{File.extname(file.path)}")
   end
 
   private

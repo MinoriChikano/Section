@@ -48,7 +48,7 @@ class AudiosController < ApplicationController
   def download
     audio = Audio.find(download_params[:id])
     file = audio.file
-    send_data(file.read, filename: "download#{File.extname(file.path)}")
+    send_data(file.read, filename: "#{audio.title}#{File.extname(file.path)}")
   end
 
   private
