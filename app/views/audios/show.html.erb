@@ -4,7 +4,6 @@
     <p>ユーザー: <%= @audio.user.name %></p>
     <p>キー: <%= @audio.key %></p>
     <p>テンポ: <%= @audio.bpm %></p>
-    <p>ファイル:<%= @audio.file.url %></p>
     <p class = "download_tag"><%= link_to download_audio_path(@audio), data: { confirm: 'ダウンロードしますか?' }, class: "btn btn-primary", download: @audio.file do %>
       DOWNLOAD
     <% end %></p>
