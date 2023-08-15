@@ -5,7 +5,6 @@
     <div class="response_info">
       <p>ユーザー: <%= response.user.name %></p>
       <p>コメント: <%= response.comment %></p>
-      <p>ファイル: <%= response.file.url %></p>
       <p class="download_tag">
         <%= link_to download_audio_response_path(audio, response), data: { confirm: 'ダウンロードしますか?' }, class: "btn btn-primary btn-sm", download: @response.file do %>
           DOWNLOAD
