@@ -9,7 +9,7 @@ set :application, 'Section'
 set :repo_url, 'https://github.com/MinoriChikano/Section'
 
 # deployするブランチ。デフォルトでmainを使用している場合、masterをmainに変更してください。
-set :branch, ENV['BRANCH'] || 'master'
+set :branch, ENV['BRANCH'] || 'issues/#43'
 
 # deploy先のディレクトリ。
 set :deploy_to, '/var/www/Section'
