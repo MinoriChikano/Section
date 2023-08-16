@@ -42,7 +42,7 @@ class AudiosController < ApplicationController
 
   def destroy
     @audio.destroy
-    redirect_to audios_path(project_id: @audio.project_id), notice: "編集しました"
+    redirect_to audios_path(project_id: @audio.project_id), notice: "削除しました"
   end
 
   def download
