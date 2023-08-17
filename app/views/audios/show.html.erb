@@ -8,7 +8,7 @@
       DOWNLOAD
     <% end %></p>
     <p>コメント:</p>
-    <p><%= @audio.comment %></p>
+    <p><%=safe_join(@audio.comment.split("\n"),tag(:br))%></p>
 
     <h5>レスポンス</h5>
     <div class="response_form">
@@ -18,7 +18,7 @@
       <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
     </div>
   </div>
-
+  
   <div class="audio_options">
     <div class="audio_edit_delete">
       <% if current_user == @audio.user %>

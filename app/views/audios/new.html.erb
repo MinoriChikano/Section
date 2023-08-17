@@ -1,6 +1,6 @@
 <div class="audio_form_container">
   <%= form_with(model: @audio, local: true) do |f| %>
-    <h4 class="new_file">ファイルを登録</h4>
+    <h4 class="new_file">オーディオを登録</h4>
   
     <% if @audio.errors.any? %>
       <div id="error_explanation">
@@ -35,7 +35,7 @@
     <div class="audio_form_blank"></div>
   
     <div class="audio_comment">
-      <%= f.text_area :comment, size: "60x8", style: "border: none", placeholder: "コメント" %>
+      <%= f.text_area :comment, size: "60x8", style: "border: none", placeholder: "コメント", wrap: "hard" %>
     </div>
   
     <div class="audio_bt_blank"></div>

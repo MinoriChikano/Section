@@ -63,9 +63,18 @@
     align-items: center;
   }
 
-  .left-links a {
-    color: white
-  } 
+  .left-white-links {
+    color: white;
+    text-decoration: none;
+  }
+
+  .left-white-links:hover {
+   color: white;
+  }
+
+  .left-red-link {
+    color: red;
+  }
 
   .right-links {
     display: flex;
