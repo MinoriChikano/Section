@@ -16,11 +16,11 @@
       <a class="header-logo"><%= image_tag 'header_logo.png', width: "150px", height: "53px" %></a>
       <div class="left-links">
         <% if controller_name == 'projects' && action_name == 'show' || controller_name == 'audios' && action_name == 'index'%>
-          <%= link_to '+プロジェクト', new_project_path %>
-          <%= link_to 'ミュージック', audios_path(project_id: @project.id) %>
-          <%= link_to 'アップロード', new_audio_path(project_id: @project.id) %>
+          <%= link_to '+プロジェクト', new_project_path,class: "left-white-links" %>
+          <%= link_to "オーディオ", audios_path(project_id: @project.id),class: "left-white-links" %>
+          <%= link_to 'アップロード', new_audio_path(project_id: @project.id),class:"btn btn-outline-danger left-red-link" %>
         <% else %>
-          <%= link_to '+プロジェクト', new_project_path %>
+          <%= link_to '+プロジェクト', new_project_path,class: "left-white-links" %>
         <% end %>
       </div>
       <div class="right-links">
