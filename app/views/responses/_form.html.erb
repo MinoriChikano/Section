@@ -11,7 +11,7 @@
     </div>
   <% end %>
 <div class= "response_form">
-    <p><%= form.text_area :comment, size: "60x4", style: "border: none", placeholder: "コメント" %></p>
+    <p><%= form.text_area :comment, size: "60x4", style: "border: none", placeholder: "コメント", wrap: "hard" %></p>
     <p><%= form.file_field :file %></p>
     <p><%= form.submit %></p>
 </div>

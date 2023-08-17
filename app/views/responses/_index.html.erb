@@ -4,7 +4,8 @@
     <div class="response-comment" id="this_response_<%= response.id %>"></div>
     <div class="response_info">
       <p>ユーザー: <%= response.user.name %></p>
-      <p>コメント: <%= response.comment %></p>
+      <p>コメント:</p>
+      <p><%= safe_join(response.comment.split("\n"),tag(:br)) %></p>
       <p class="download_tag">
         <%= link_to download_audio_response_path(audio, response), data: { confirm: 'ダウンロードしますか?' }, class: "btn btn-primary btn-sm", download: @response.file do %>
           DOWNLOAD
