@@ -17,6 +17,7 @@
       <div class="left-links">
         <% if controller_name == 'projects' && action_name == 'show' || controller_name == 'audios' && action_name == 'index'%>
           <%= link_to '+プロジェクト', new_project_path %>
+          <%= link_to 'ミュージック', audios_path(project_id: @project.id) %>
           <%= link_to 'アップロード', new_audio_path(project_id: @project.id) %>
         <% else %>
           <%= link_to '+プロジェクト', new_project_path %>

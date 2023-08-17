@@ -18,7 +18,7 @@
       <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
     </div>
   </div>
-
+  
   <div class="audio_options">
     <div class="audio_edit_delete">
       <% if current_user == @audio.user %>
