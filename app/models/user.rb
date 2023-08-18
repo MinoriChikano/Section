@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :joins, dependent: :destroy
   has_many :join_projects, through: :joins, source: :project
   validates :name, presence: true
+  validates :name, length: { maximum: 30 }
   validates :email, presence: true
   
   def self.find_by_email(email)
