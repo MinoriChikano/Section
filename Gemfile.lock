@@ -372,6 +372,7 @@ DEPENDENCIES
   ed25519
   fog-aws
   jbuilder (~> 2.7)
+  kaminari
   listen (~> 3.3)
   pg (~> 1.1)
   pry-byebug
