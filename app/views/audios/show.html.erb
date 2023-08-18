@@ -4,16 +4,25 @@
     <p>ユーザー: <%= @audio.user.name %></p>
     <p>キー: <%= @audio.key %></p>
     <p>テンポ: <%= @audio.bpm %></p>
-    <p class = "download_tag"><%= link_to download_audio_path(@audio), data: { confirm: 'ダウンロードしますか?' }, class: "btn btn-primary", download: @audio.file do %>
-      DOWNLOAD
-    <% end %></p>
+
+    <% if @audio.file.present? %>
+      <p class="download_tag">
+        <%= link_to download_audio_path(@audio), data: { confirm: 'ダウンロードしますか?' }, class: "btn btn-primary", download: @audio.file do %>
+          DOWNLOAD
+        <% end %>
+      </p>
+    <% else %>
+      <p></p>
+    <% end %>
+
     <p>コメント:</p>
-    <p><%=safe_join(@audio.comment.split("\n"),tag(:br))%></p>
+    <p><%= safe_join(@audio.comment.split("\n"), tag(:br)) %></p>
 
     <h5>レスポンス</h5>
     <div class="response_form">
       <%= render partial: 'responses/form', locals: { response: @response, audio: @audio } %>
     </div>
+    
     <div id="responses_area">
       <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
     </div>
@@ -26,7 +35,12 @@
         <a><%= link_to '削除', audio_path(@audio.id), method: :delete, data: { confirm: '本当に削除しますか?' } %></a>
       <% end %>
     </div>
-    <div class="audio_blank"></div>
-    <%= audio_tag @audio.file, controls: true %>
+
+    <% if @audio.file.present? %>
+      <div class="audio_blank"></div>
+      <%= audio_tag @audio.file, controls: true %>
+    <% else %>
+      <div></div>
+    <% end %>
   </div>
 </div>
