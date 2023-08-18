@@ -17,12 +17,13 @@
 
     <p>コメント:</p>
     <p><%= safe_join(@audio.comment.split("\n"), tag(:br)) %></p>
-
+    <br>
+    <br>
     <h5>レスポンス</h5>
     <div class="response_form">
       <%= render partial: 'responses/form', locals: { response: @response, audio: @audio } %>
     </div>
-    
+    <br>
     <div id="responses_area">
       <%= render partial: 'responses/index', locals: { responses: @responses, audio: @audio } %>
     </div>
