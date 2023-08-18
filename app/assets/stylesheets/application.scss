@@ -1,0 +1,358 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import 'bootstrap';
+
+
+  body {
+    background-color: #eaeaea;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .upper_part_background {
+    background-color: #FAFF27;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+  }
+
+  .top_logo {
+    margin-bottom: 30px;
+    margin-top: 50px;
+  }
+
+  .top_content {
+    font-size: 26px;
+    color: #6c757d;
+    line-height: 1.5;
+    padding-left: 30px;
+    margin-top: 20px; 
+  }
+
+  .under_part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 120px;
+    margin-top: 40px; 
+  }
+
+  .main-header {
+    width: 100%;
+    background-color: black;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header-logo {
+    padding: 10px 50px; 
+  }
+
+  .main-header__wrapper {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .left-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .left-white-links {
+    color: white;
+    text-decoration: none;
+  }
+
+  .left-white-links:hover {
+   color: white;
+  }
+
+  .left-red-link {
+    color: red;
+  }
+
+  .right-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-left: auto;
+    padding-right: 60px;
+  }
+
+  .right-links a {
+    color: white
+  }
+
+ .centered-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .centered-logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .field {
+    margin-bottom: 1em;
+  }
+
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="password"]{
+    height: 40px;
+  }
+
+  .guest_actions_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .guest_actions {
+    font-size: 15px;
+    margin-right: 290px;
+  }
+
+  .main-footer{
+    font-family: "font-family: "Helvetica Neue" , Helvetica";
+    background-color: #6c757d;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    padding-top: 10px;
+    position: absolute;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
+
+  .audio_form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+  }
+  
+  .new_file {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .audio_form_blank {
+    margin-top: 30px;
+  }
+
+  .audio_bt_blank {
+    margin-top: 10px;
+  }
+
+  .project_form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+
+  .new_project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project_form_blank {
+    margin-top: 20px;
+  }
+
+  .join_form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+
+  .new_join {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .join_blank {
+    margin-top: 30px;
+  }
+
+  .join_form_height {
+    height: 40px;
+    border: none;
+    outline: none;
+  }
+
+  .project_member_container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 200px;
+    margin-top: 160px;
+  }
+
+  .project_member {
+    font-size: 22px;
+    color:#6c757d;
+  }
+
+  .project_name{
+    color:#6c757d;
+  }
+
+  .user_info_space {
+    padding-right: 160px;
+    font-size: 20px;
+  }
+  
+  .project_bt_container{
+    display: flex;
+    gap: 15px;
+  }
+
+  .project_index_container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 200px;
+    margin-top: 140px;
+  }
+
+  .project_index {
+    font-size: 20px;
+  }
+
+  .project_index_adjustment{
+    padding-right: 100px;
+    font-size: 20px;
+    color:#6c757d;
+  }
+
+  .project_name_center_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 140px;
+  } 
+  
+  .audio_project_name {
+    color:#6c757d;
+  }
+
+  .audio_data_container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 140px;
+    overflow: auto;
+    padding-bottom: 110px;
+  }
+
+  .audio_detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .audio_options{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 160px;
+    margin-top: 20px;
+  }
+
+  .audio_edit_delete{
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-right: 10px;
+  }
+
+  .audio_blank{
+    margin-top: 20px;
+  }
+
+  .download_tag{
+    font-family: "serif";
+  }
+
+  .response_container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  .response_form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .response_index_container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  .response_info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  .pagination>li>a {          
+    border: none; 
+    color: #696969; 
+  }
+  
+  .pagination>.active>a {     
+    background: #6c757d;
+    border-radius: 15px;
+  }
+  
+  .pagination>li>a:hover {        
+    border-radius: 15px;
+  }
