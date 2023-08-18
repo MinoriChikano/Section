@@ -2,7 +2,13 @@
   <h3 class="audio_project_name"><%= @project.name %>のオーディオ</h3>
 
   <br>
-
+  <% if notice %>
+    <p class="alert alert-notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-error"><%= alert %></p>
+  <% end %>
+  
   <table>
     <% @audios.each do |audio| %>
       <div class="card border-secondary mb-3" style="width: 50rem;">
