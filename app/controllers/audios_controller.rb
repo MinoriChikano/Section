@@ -17,6 +17,7 @@ class AudiosController < ApplicationController
 
   def create
     @audio = current_user.audios.build(audio_params)
+    @project = Project.find(params[:audio][:project_id])
     if @audio.save
       redirect_to audios_path(project_id: @audio.project_id), notice: "ミュージックを作成しました"
     else

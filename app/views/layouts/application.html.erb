@@ -14,7 +14,9 @@
 <body>
   <header class="main-header">
     <div class="wrapper main-header__wrapper">
-      <a class="header-logo"><%= image_tag 'header_logo.png', width: "150px", height: "53px" %></a>
+      <a class="header-logo" href="<%= root_path %>">
+        <%= image_tag 'header_logo.png', width: "150px", height: "53px" %>
+      </a>
       <div class="left-links">
         <% if controller_name == 'projects' && action_name == 'show' || controller_name == 'audios' && action_name == 'index'%>
           <%= link_to '+プロジェクト', new_project_path,class: "left-white-links" %>
@@ -46,9 +48,8 @@
   <%= yield %>
 
   <footer class="main-footer">
-    <p>programing monk</p>
+    <p> ©️ 2023 pg monk</p>
   </footer>
 </body>
 </html>
-
 
