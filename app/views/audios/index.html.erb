@@ -10,7 +10,7 @@
           <div class="flex-grow-1">
             <h5 class="card-title"><span class="bi bi-soundwave"> </span><%= link_to audio.title, audio_path(audio.id) %></h5>
             <h7 class="card-text">キー: <%= audio.key %></h7>
-            <h7 class="card-text">テンポ: <%= audio.bpm %></h7>
+            <h7 class="card-text">BPM: <%= audio.bpm %></h7>
           </div>
 
           <% if current_user == audio.user %>
