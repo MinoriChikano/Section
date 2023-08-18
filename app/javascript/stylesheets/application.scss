@@ -319,3 +319,24 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  .pagination>li>a {          
+    border: none; 
+    color: #696969; 
+  }
+  
+  .pagination>.active>a {     
+    background: #6c757d;
+    border-radius: 15px;
+  }
+  
+  .pagination>li>a:hover {        
+    border-radius: 15px;
+  }
