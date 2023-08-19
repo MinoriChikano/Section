@@ -7,6 +7,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     projects_path(resource)
   end
 
+  def after_update_path_for(resource)
+    users_show_path(resource)
+  end
+
   def ensure_guest_user
     if resource.email == 'guest@example.com' || resource.email == 'guest_admin@example.com'
       redirect_to root_path, alert: 'ゲストユーザーは編集/削除できません。'
