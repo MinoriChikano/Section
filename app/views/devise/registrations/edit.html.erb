@@ -9,7 +9,7 @@
   </div>
 
   <div class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",size: "50",style: "border: none", placeholder: "Eメール" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",size: "50",style: "border: none", placeholder: "メールアドレス" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -17,7 +17,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.password_field :password, autocomplete: "new-password",size: "50",style: "border: none", placeholder: "新しいEメール" %>
+    <%= f.password_field :password, autocomplete: "new-password",size: "50",style: "border: none", placeholder: "新しいパスワード" %>
   </div>
 
   <div class="field">
