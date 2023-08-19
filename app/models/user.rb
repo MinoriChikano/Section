@@ -28,4 +28,12 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
+
+  def guest?
+    email == 'guest@example.com'
+  end
+
+  def guest_admin?
+    email == 'guest_admin@example.com'
+  end
 end
