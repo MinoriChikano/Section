@@ -16,7 +16,7 @@
     <% end %>
 
     <p>コメント:</p>
-    <p><%= safe_join(@audio.comment.split("\n"), tag(:br)) %></p>
+    <p><%= text_url_to_link(safe_join(@audio.comment.split("\n"), tag(:br))).html_safe %></p>
     <br>
     <br>
     <h5>レスポンス</h5>

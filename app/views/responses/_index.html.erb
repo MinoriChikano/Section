@@ -5,7 +5,7 @@
       <div class="response_info">
         <p>ユーザー: <%= response.user.name %></p>
         <p>コメント:</p>
-        <p><%= safe_join(response.comment.split("\n"), tag(:br)) %></p>
+        <p><%= text_url_to_link(safe_join(response.comment.split("\n"), tag(:br))).html_safe %></p>
 
         <% if response.file.present? %>
           <p class="download_tag">
@@ -27,6 +27,7 @@
           </div>
         <% else %>
         <% end %>
+        <br>
       </div>
     <% end %>
   <% end %>
