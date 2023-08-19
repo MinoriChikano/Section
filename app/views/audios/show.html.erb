@@ -3,7 +3,7 @@
     <h1 class="audio_title"><%= @audio.title %></h1>
     <p>ユーザー: <%= @audio.user.name %></p>
     <p>キー: <%= @audio.key %></p>
-    <p>テンポ: <%= @audio.bpm %></p>
+    <p>BPM: <%= @audio.bpm %></p>
 
     <% if @audio.file.present? %>
       <p class="download_tag">
