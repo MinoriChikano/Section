@@ -362,3 +362,33 @@
   .pagination>li>a:hover {        
     border-radius: 15px;
   }
+
+  .user_info_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 200px;
+    margin-top: 200px;
+  } 
+
+  .user_name{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px
+  }
+
+  .user_email{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px
+  }
+  
+  .info{
+    font-size: 26px;
+    color:#6c757d;
+  }

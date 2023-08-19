@@ -30,10 +30,12 @@
       <div class="right-links">
         <% if user_signed_in? %>
           <% if current_user.admin? %>
-            <%= link_to '管理者', rails_admin_path, class: "left-white-links" %>
+            <%= link_to '管理者', rails_admin_path %>
+            <%= link_to 'アカウント', users_show_path %>
             <%= link_to "マイページ", projects_path %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           <% else %>
+            <%= link_to 'アカウント', users_show_path %>
             <%= link_to "マイページ", projects_path %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           <% end %>

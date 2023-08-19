@@ -1,0 +1,12 @@
+<div class="user_info_container">
+  <p class ="info">アカウント情報</p>
+  <div class="user_name">
+    <p class="info">ユーザー名:</p>
+    <p class="info"><%= @user.name %></p>
+  </div>
+  <div class="user_email">
+    <p class="info">メールアドレス:</p>
+    <p class="info"><%= @user.email %></p>
+  </div>
+  <p class="btn btn-outline-danger"><%= link_to 'アカウント情報を編集', edit_user_registration_path %></p>
+</div>

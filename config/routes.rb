@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'tops#index'
   resources :projects
@@ -15,7 +16,8 @@ Rails.application.routes.draw do
   resources :joins, only: [:new, :create]
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    get: "users#show"
   }
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
