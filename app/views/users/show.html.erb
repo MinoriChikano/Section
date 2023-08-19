@@ -8,5 +8,9 @@
     <p class="info">メールアドレス:</p>
     <p class="info"><%= @user.email %></p>
   </div>
-  <p class="btn btn-outline-danger"><%= link_to 'アカウント情報を編集', edit_user_registration_path %></p>
+
+  <% unless current_user.guest? || current_user.guest_admin? %>
+    <p class="btn btn-outline-danger"><%= link_to 'アカウント情報を編集', edit_user_registration_path %></p>
+  <% end %>
+
 </div>
