@@ -27,7 +27,7 @@
   <% if current_user == @project.user %>
     <div class="project_bt_container">
       <p class="btn btn-outline-primary"><%= link_to 'ユーザーを追加する', new_join_path(project_id: @project.id) %></p>
-      <p class="btn btn-outline-danger"><%= link_to 'プロジェクトを削除する', project_path, method: :delete, data: { confirm: 'プロジェクトを削除してもよろしいですか？' } %></p>
+      <p class="btn btn-outline-danger"><%= link_to 'プロジェクトを削除する', project_path, method: :delete, id: "delete_button", data: { confirm: 'プロジェクトを削除してもよろしいですか？' } %></p>
     </div>
   <% end %>
 </div>
