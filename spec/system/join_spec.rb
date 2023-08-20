@@ -1,8 +1,11 @@
 require 'rails_helper'
 RSpec.describe 'ジョイン管理機能', type: :system do
-    let!(:user) { FactoryBot.create(:second_user) }
-    let!(:project) { FactoryBot.create(:project, user: user) }
-    let!(:audio) { FactoryBot.create(:audio, user: user) }
+  let!(:user) { FactoryBot.create(:second_user) }
+  let!(:project) { FactoryBot.create(:project, user: user) }
+  let!(:audio) { FactoryBot.create(:audio,project: project, user: user) }
+  let!(:third_user) { FactoryBot.create(:third_user) }
+  let!(:join) { FactoryBot.create(:join, project: project, user: third_user) }
+
   describe 'ユーザ参加機能' do
     before do
       visit new_user_session_path
@@ -17,7 +20,7 @@ RSpec.describe 'ジョイン管理機能', type: :system do
         click_on "ユーザーを追加する"
         fill_in 'メールアドレスを入力してください', with: "testtest@email.com" 
         click_on '登録する'
-        expect(page).to have_content "testtest@email.com" 
+        expect(page).to have_content "2305@email.com" 
       end
     end
 
@@ -32,7 +35,7 @@ RSpec.describe 'ジョイン管理機能', type: :system do
         fill_in 'メールアドレスを入力してください', with: "testtest@email.com" 
         click_on '登録する'
         sleep(4)
-        expect(page).to have_content "testtest@email.com" 
+        expect(page).to have_content "2305@email.com" 
       end
     end
 
@@ -44,6 +47,22 @@ RSpec.describe 'ジョイン管理機能', type: :system do
         fill_in 'メールアドレスを入力してください', with: "test2@email.com" 
         click_on '登録する'
         expect(page).to have_content "test2@email.com"
+      end
+    end
+  end
+  describe 'ユーザー追加画面のアクセス制限' do
+    before do
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: third_user.email
+      fill_in 'パスワード(6文字以上)', with: third_user.password
+      click_button "ログイン"
+    end
+
+    context '参加したユーザーが追加画面へ遷移しようとした場合' do
+      it 'プロジェクト一覧画面へリダイレクトする' do
+        click_on "メンバー一覧"
+        visit new_join_path(project_id: project.id)
+        expect(current_url).to include(projects_path) 
       end
     end
   end

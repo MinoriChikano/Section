@@ -1,10 +1,10 @@
 require 'rails_helper'
 RSpec.describe 'オーディオ管理機能', type: :system do
-    let!(:user) { FactoryBot.create(:second_user) }
-    let!(:project) { FactoryBot.create(:project, user: user) }
-    let!(:audio) { FactoryBot.create(:audio,project: project, user: user) }
-    let!(:third_user) { FactoryBot.create(:third_user) }
-    let!(:join) { FactoryBot.create(:join, project: project, user: third_user) }
+  let!(:user) { FactoryBot.create(:second_user) }
+  let!(:project) { FactoryBot.create(:project, user: user) }
+  let!(:audio) { FactoryBot.create(:audio,project: project, user: user) }
+  let!(:third_user) { FactoryBot.create(:third_user) }
+  let!(:join) { FactoryBot.create(:join, project: project, user: third_user) }
 
   describe '新規作成機能' do
     before do
