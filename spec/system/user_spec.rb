@@ -42,10 +42,12 @@ RSpec.describe 'ユーザ管理機能', type: :system do
         fill_in 'パスワード(6文字以上)', with: @user.password
         click_button "ログイン"
       end
+
       it 'アカウントの詳細に飛べる' do
         click_on "アカウント"
         expect(current_path).to eq users_show_path
       end
+
       it '編集できる' do
         click_on "アカウント"
         click_on "アカウント情報を編集"
@@ -56,6 +58,11 @@ RSpec.describe 'ユーザ管理機能', type: :system do
         fill_in '現在のパスワード', with: "123456"
         click_button "更新"
         expect(current_url).to include(users_show_path)
+      end
+
+      it 'ログアウトできる' do
+        click_on "ログアウト"
+        expect(current_path).to eq root_path
       end
     end
   end
