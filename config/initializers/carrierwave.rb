@@ -23,5 +23,8 @@ CarrierWave.configure do |config|
     when 'development'
       config.fog_directory = 'sectiondev'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/sectiondev'
+    when 'test'
+      config.fog_directory = 'sectiontest'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/sectiontest'
   end
 end
