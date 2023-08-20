@@ -58,7 +58,7 @@ RSpec.describe 'オーディオ管理機能', type: :system do
       it '当該オーディオが削除された一覧画面に更新される' do
         click_on "オーディオ"
         within(".btn-group") do
-          click_link "削除"
+          click_link "削除", match: :first
           page.accept_alert("本当に削除しますか?")
         end
         expect(current_url).to include(audios_path)
@@ -68,7 +68,7 @@ RSpec.describe 'オーディオ管理機能', type: :system do
     context 'オーディオ一覧の編集ボタンをクリックした時時' do
       it '当該オーディオの編集画面に遷移する' do
         click_on "オーディオ"
-        click_on '編集'
+        click_on '編集', match: :first
         expect(page).to have_content 'オーディオを編集'
       end
     end
@@ -104,7 +104,7 @@ RSpec.describe 'オーディオ管理機能', type: :system do
       it '当該オーディオが削除された一覧画面に遷移する' do
         click_on "マイページ"
         click_on "オーディオ"
-        click_on 'test'
+        click_on 'test', match: :first
         within(".audio_edit_delete") do
           click_link "削除"
           page.accept_alert("本当に削除しますか?")
@@ -117,7 +117,7 @@ RSpec.describe 'オーディオ管理機能', type: :system do
       it '当該オーディオが編集された一覧画面に遷移する' do
         click_on "マイページ"
         click_on "オーディオ"
-        click_on 'test'
+        click_on 'test', match: :first
         click_on '編集'
         fill_in 'タイトル', with: "幽霊"
         select('F', from: 'audio[key]')
