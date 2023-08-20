@@ -48,7 +48,7 @@ class JoinsController < ApplicationController
     project = find_project(params[:project_id])
     unless current_user.id == project.user.id
       flash[:notice] = "権限がありません"
-      redirect_to project_url(project)
+      redirect_to projects_path
     end
   end
 
