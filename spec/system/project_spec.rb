@@ -15,7 +15,7 @@ RSpec.describe 'プロジェクト管理機能', type: :system do
   end
   describe '既存のプロジェクト削除機能' do
     context 'プロジェクトを削除した場合' do
-      it '当該プロジェクトの名前がなくなった状態で一覧画面が表示される' do
+      it '当該プロジェクトが削除された状態で一覧画面が表示される' do
         visit new_user_session_path
         click_on 'ゲスト管理者はこちら'
         click_on '+プロジェクト'
