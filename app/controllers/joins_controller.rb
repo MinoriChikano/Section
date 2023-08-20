@@ -3,6 +3,7 @@ class JoinsController < ApplicationController
   before_action :email_exist?, only: [:create]
   before_action :user_exist?, only: [:create]
   before_action :owner?, only: [:create]
+  before_action :joined_user, only: [:new]
 
   def new
     @project = Project.find(params[:project_id])
@@ -41,6 +42,14 @@ class JoinsController < ApplicationController
   def owner?
     project = find_project(params[:project_id].keys.first)
     redirect_to project_url(project), notice: "このユーザーはオーナ-として登録されています" if project.user.email == params[:email]
+  end
+
+  def joined_user
+    project = find_project(params[:project_id])
+    unless current_user.id == project.user.id
+      flash[:notice] = "権限がありません"
+      redirect_to project_url(project)
+    end
   end
 
   # def email_reliable?(address)
