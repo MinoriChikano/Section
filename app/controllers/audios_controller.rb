@@ -55,7 +55,7 @@ class AudiosController < ApplicationController
   private
 
   def audio_params
-    params.require(:audio).permit(:title, :bpm, :key, :comment, :file, :project_id)
+    params.require(:audio).permit(:title, :bpm, :key, :comment, :file, :reference, :project_id)
   end
 
   def download_params
