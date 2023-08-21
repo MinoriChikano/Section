@@ -7,7 +7,7 @@ class AudiosController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    @audios = @project.audios.page(params[:page]).per(4)
+    @audios = @project.audios.order(created_at:"DESC").page(params[:page]).per(4)
   end
 
   def new
