@@ -7,11 +7,10 @@
 ## 就業Termで学んだ技術
 * Devise
 * AWS EC2
+* Ajax
 
 ## カリキュラム外で取り入れようと考えている技術
 * gem rails_adminとgem cancancanによる管理者機能
-* OAuth認証とgoogle apiの自動ログイン機能
-* Apple Music apiによるプレイリストの埋め込みリンク
 * AWS S3
 
 ## 実行手順
@@ -36,8 +35,8 @@ https://drive.google.com/drive/folders/1hhxOEh-6xK1rMFKuUkte8_4sBpItIzaK?usp=sha
 
 
 ## 画面遷移図
-![transition](/image/transition(rev).png)
+![transition](/image/transition(rev3).png)
 
 
-## ER図　
-![er](/image/er(rev).png)
+## ER図　 
+![er](/image/er(rev3).png)
