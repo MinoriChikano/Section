@@ -16,11 +16,10 @@ class AudiosController < ApplicationController
   end
 
   def create
-    @audio = current_user.audios.build(audio_params)
-    @project = Project.find(params[:audio][:project_id])
-    
     applemusic = params[:audio][:reference]
     applemusic.slice!(0,23)
+    @audio = current_user.audios.build(audio_params)
+    @project = Project.find(params[:audio][:project_id])
     @audio.reference = applemusic
 
     if @audio.save
@@ -39,6 +38,9 @@ class AudiosController < ApplicationController
   end
 
   def update
+    applemusic = params[:audio][:reference]
+    @audio.reference = applemusic
+
     if @audio.update(audio_params)
       redirect_to audios_path(project_id: @audio.project_id), notice: "編集しました"
     else
