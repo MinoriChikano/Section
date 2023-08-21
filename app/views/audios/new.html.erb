@@ -33,6 +33,12 @@
     </div>
   
     <div class="audio_form_blank"></div>
+
+    <div class="audio_reference">
+      <%= f.text_field :reference,size: "60", style: "border: none", placeholder: "リファレンス(Apple MusicのプレイリストもしくはアルバムのURL)" %>
+    </div>
+
+    <div class="audio_form_blank"></div>
   
     <div class="audio_comment">
       <%= f.text_area :comment, size: "60x8", style: "border: none", placeholder: "コメント", wrap: "hard" %>

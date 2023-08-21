@@ -18,6 +18,11 @@ class AudiosController < ApplicationController
   def create
     @audio = current_user.audios.build(audio_params)
     @project = Project.find(params[:audio][:project_id])
+    
+    applemusic = params[:audio][:reference]
+    applemusic.slice!(0,23)
+    @audio.reference = applemusic
+
     if @audio.save
       redirect_to audios_path(project_id: @audio.project_id), notice: "ミュージックを作成しました"
     else
@@ -86,5 +91,11 @@ class AudiosController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to audios_path(project_id: @audio.project_id)
     end
+  end
+
+  def sound_source
+    applemusic = params[:audio][:reference]
+    applemusic.slice!(0,23)
+    @audio.reference = applemusic
   end
 end
