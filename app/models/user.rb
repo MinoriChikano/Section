@@ -37,3 +37,5 @@ class User < ApplicationRecord
     email == 'guest_admin@example.com'
   end
 end
+
+

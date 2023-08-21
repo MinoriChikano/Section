@@ -41,7 +41,7 @@ class JoinsController < ApplicationController
 
   def owner?
     project = find_project(params[:project_id].keys.first)
-    redirect_to project_url(project), notice: "このユーザーはオーナ-として登録されています" if project.user.email == params[:email]
+    redirect_to project_url(project), notice: "このユーザーはオーナーとして登録されています" if project.user.email == params[:email]
   end
 
   def joined_user
