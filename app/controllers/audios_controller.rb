@@ -92,10 +92,4 @@ class AudiosController < ApplicationController
       redirect_to audios_path(project_id: @audio.project_id)
     end
   end
-
-  def sound_source
-    applemusic = params[:audio][:reference]
-    applemusic.slice!(0,23)
-    @audio.reference = applemusic
-  end
 end
