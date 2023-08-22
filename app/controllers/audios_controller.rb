@@ -7,7 +7,7 @@ class AudiosController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    @audios = @project.audios.page(params[:page]).per(4)
+    @audios = @project.audios.order(created_at:"DESC").page(params[:page]).per(4)
   end
 
   def new
@@ -16,10 +16,14 @@ class AudiosController < ApplicationController
   end
 
   def create
+    applemusic = params[:audio][:reference]
+    applemusic.slice!(0,23)
     @audio = current_user.audios.build(audio_params)
     @project = Project.find(params[:audio][:project_id])
+    @audio.reference = applemusic
+
     if @audio.save
-      redirect_to audios_path(project_id: @audio.project_id), notice: "ミュージックを作成しました"
+      redirect_to audios_path(project_id: @audio.project_id), notice: "アップロードしました"
     else
       render :new
     end
@@ -34,6 +38,10 @@ class AudiosController < ApplicationController
   end
 
   def update
+    applemusic = params[:audio][:reference]
+    applemusic.slice!(0,23)
+    @audio.reference = applemusic
+
     if @audio.update(audio_params)
       redirect_to audios_path(project_id: @audio.project_id), notice: "編集しました"
     else
@@ -55,7 +63,7 @@ class AudiosController < ApplicationController
   private
 
   def audio_params
-    params.require(:audio).permit(:title, :bpm, :key, :comment, :file, :project_id)
+    params.require(:audio).permit(:title, :bpm, :key, :comment, :file, :reference, :project_id)
   end
 
   def download_params
