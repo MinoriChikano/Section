@@ -8,7 +8,9 @@
   <% end %>
   
   <h4 class='project_name'><%= @project.name %>のメンバー</h4>
+
   <br>
+  
   <div class='project_member'>
     <table>
       <tr>
@@ -30,7 +32,9 @@
         </tr>
       <% end %>
     </table>
+
     <br>
+
   </div>
   <% if current_user == @project.user %>
     <div class="project_bt_container">

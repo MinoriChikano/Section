@@ -1,19 +1,20 @@
-<div class = "response_data_container">
-<%= form_with(model: [audio, response], local: false) do |form| %>
-  <% if response.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(response.errors.count, "error") %> prohibited this response from being saved:</h2>
-      <ul>
-      <% response.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="response_data_container">
+  <%= form_with(model: [audio, response], local: false) do |form| %>
+    <% if response.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(response.errors.count, "error") %> prohibited this response from being saved:</h2>
+        <ul>
+          <% response.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="response_form">
+      <p><%= form.text_area :comment, size: "60x4", style: "border: none", placeholder: "コメント", wrap: "hard" %></p>
+      <p><%= form.file_field :file %></p>
+      <p><%= form.submit %></p>
     </div>
   <% end %>
-<div class= "response_form">
-    <p><%= form.text_area :comment, size: "60x4", style: "border: none", placeholder: "コメント", wrap: "hard" %></p>
-    <p><%= form.file_field :file %></p>
-    <p><%= form.submit %></p>
-</div>
-<% end %>
 </div>

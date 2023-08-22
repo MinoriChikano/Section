@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :destroy] 
-  before_action :outsider, only: [:show]
-  before_action :reguler_member, only: [:destroy]
+  before_action :set_project, only: %i[show destroy] 
+  before_action :outsider, only: :show
+  before_action :reguler_member, only: :destroy
 
   def index
     @projects = Project.all

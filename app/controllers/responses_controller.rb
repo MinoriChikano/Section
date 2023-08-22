@@ -1,6 +1,7 @@
 class ResponsesController < ApplicationController
-  before_action :set_audio, only: [:create, :edit, :update]
+  before_action :set_audio, only: %i[create edit update]
   before_action :authenticate_user!
+
   def create
     @audio = Audio.find(params[:audio_id])
     @response = @audio.responses.build(response_params)
