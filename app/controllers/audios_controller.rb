@@ -23,7 +23,7 @@ class AudiosController < ApplicationController
     @audio.reference = applemusic
 
     if @audio.save
-      redirect_to audios_path(project_id: @audio.project_id), notice: "ミュージックを作成しました"
+      redirect_to audios_path(project_id: @audio.project_id), notice: "アップロードしました"
     else
       render :new
     end
@@ -39,6 +39,7 @@ class AudiosController < ApplicationController
 
   def update
     applemusic = params[:audio][:reference]
+    applemusic.slice!(0,23)
     @audio.reference = applemusic
 
     if @audio.update(audio_params)
