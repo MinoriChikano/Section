@@ -27,6 +27,57 @@ RSpec.describe 'オーディオ管理機能', type: :system do
         expect(page).to have_content '桜'
       end
     end
+
+    context 'リファレンスのリンクを記載オーディオを新規作成した場合' do
+      it 'オーディオ一詳細でiframeが反映されている' do
+        click_on "オーディオ"
+        click_on "アップロード"
+        fill_in 'タイトル', with: '桜'
+        select('C', from: 'audio[key]')
+        fill_in 'BPM', with: '200'
+        fill_in 'コメント', with:'春の歌'
+        fill_in 'audio[reference]', with: 'https://music.apple.com/jp/album/the-best-part-about-being-human/1692781901'
+        attach_file 'audio[file]', Rails.root.join('spec', 'fixtures', 'sample.mp3')
+        click_on '登録する'
+        click_on '桜'
+        sleep(10)
+        expect(page).to have_content '桜'
+      end
+    end
+  end
+
+  describe '編集機能' do
+    before do
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: user.email
+      fill_in 'パスワード(6文字以上)', with: user.password
+      click_button "ログイン"
+      click_on "オーディオ"
+      click_on "アップロード"
+      fill_in 'タイトル', with: '桜'
+      select('C', from: 'audio[key]')
+      fill_in 'BPM', with: '200'
+      fill_in 'コメント', with:'春の歌'
+      attach_file 'audio[file]', Rails.root.join('spec', 'fixtures', 'sample.mp3')
+      click_on '登録する'
+      expect(page).to have_content '桜'
+    end
+
+    context '編集' do
+      it 'オーディオ一詳細でiframeが反映されている' do
+        click_on "編集", match: :first
+        fill_in 'タイトル', with: '夜風'
+        select('F', from: 'audio[key]')
+        fill_in 'BPM', with: '100'
+        fill_in 'コメント', with:'夏の歌'
+        fill_in 'audio[reference]', with: 'https://music.apple.com/jp/album/death-is-nothing-to-us/1686387946'
+        attach_file 'audio[file]', Rails.root.join('spec', 'fixtures', 'sample.mp3')
+        click_on '更新する'
+        click_on '夜風'
+        sleep(10)
+        expect(page).to have_content '夜風'
+      end
+    end
   end
 
   describe '一覧機能' do
@@ -65,7 +116,7 @@ RSpec.describe 'オーディオ管理機能', type: :system do
       end
     end
 
-    context 'オーディオ一覧の編集ボタンをクリックした時時' do
+    context 'オーディオ一覧の編集ボタンをクリックした時' do
       it '当該オーディオの編集画面に遷移する' do
         click_on "オーディオ"
         click_on '編集', match: :first
@@ -75,7 +126,6 @@ RSpec.describe 'オーディオ管理機能', type: :system do
   end
 
   describe '詳細機能' do
-
     before do
       visit new_user_session_path
       fill_in 'メールアドレス', with: user.email 
@@ -129,6 +179,7 @@ RSpec.describe 'オーディオ管理機能', type: :system do
       end
     end
   end
+  
   describe 'アクセス制限機能' do
     before do
       visit new_user_session_path
