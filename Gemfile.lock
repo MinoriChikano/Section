@@ -411,6 +411,9 @@ DEPENDENCIES
   kaminari
   launchy
   listen (~> 3.3)
+  net-imap
+  net-pop
+  net-smtp
   pg (~> 1.1)
   pry-byebug
   pry-rails
