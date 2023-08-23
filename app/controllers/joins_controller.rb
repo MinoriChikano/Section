@@ -1,9 +1,9 @@
 class JoinsController < ApplicationController
   before_action :authenticate_user!
-  before_action :email_exist?, only: [:create]
-  before_action :user_exist?, only: [:create]
-  before_action :owner?, only: [:create]
-  before_action :joined_user, only: [:new]
+  before_action :email_exist?, only: :create
+  before_action :user_exist?, only: :create
+  before_action :owner?, only: :create
+  before_action :joined_user, only: :new
 
   def new
     @project = Project.find(params[:project_id])
@@ -51,10 +51,6 @@ class JoinsController < ApplicationController
       redirect_to projects_path
     end
   end
-
-  # def email_reliable?(address)
-  #   address.match(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
-  # end
 
   def find_project(project_id)
     Project.find(project_id)

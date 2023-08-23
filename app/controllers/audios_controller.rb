@@ -1,8 +1,8 @@
 class AudiosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_audio, only: [:show, :edit, :update, :destroy]
-  before_action :other_user, only: [:edit, :update, :destroy]
-  before_action :outsider, only: [:show, :edit, :update, :destroy]
+  before_action :set_audio, only: %i[show edit update destroy]
+  before_action :other_user, only: %i[edit update destroy]
+  before_action :outsider, only: %i[show edit update destroy]
   before_action :unauthorized_user, only: :index
 
   def index

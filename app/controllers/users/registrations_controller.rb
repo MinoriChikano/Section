@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_guest_user, only: [:edit,:destroy]
+  before_action :ensure_guest_user, only: %i[edit destroy]
 
   def after_sign_up_path_for(resource)
     projects_path(resource)
