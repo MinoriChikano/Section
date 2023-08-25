@@ -14,13 +14,6 @@ class JoinsController < ApplicationController
     user = User.find_by_email(join_params)
     Join.create(user_id: user.id, project_id: project.id)
     redirect_to project_url(project), notice: "ユーザーが追加されました"
-
-    # if user
-    #   Join.create(user_id: user.id, project_id: project.id)
-    #   redirect_to project_url(project), notice: "ユーザーが追加されました"
-    # else
-    #   redirect_to project_url(project), notice: "ユーザーが見つかりませんでした"
-    # end
   end
 
   private

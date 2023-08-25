@@ -6,12 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# User.create!(
-#   name: "Chikano", 
-#   email: "chikano@email.com",
-#   password: "123456",
-#   admin: true
-# )
+User.create!(
+  name: "Chikano", 
+  email: "chikano@email.com",
+  password: "123456",
+  admin: true
+)
+
+Project.create!(
+  user_id: 13,
+  name: "without"
+)
+
+Audio.crate!(
+  project_id: 2,
+  user_id: 13,
+  title: "2023song1", 
+  bpm: 182, 
+  key: "D", 
+  comment: "新曲です。途中で拍子が3拍子に変わります", 
+  file: File.open('./app/assets/files/2023song_1.mp3')
+)
 
 # users = [
 #   { name: "Hasshy", email: "hasshy@email.com", password: "123456", admin: false },
@@ -68,14 +83,14 @@
 #   Audio.create!(audio)
 # end
 
-responses = [
-  { audio_id: 5, user_id: 5, comment: "オッケー!耳コピしとく" },
-  { audio_id: 5, user_id: 6, comment: "ドラムだけの音声もらえる?" },
-  { audio_id: 5, user_id: 3, comment: "送る！", file: File.open('./app/assets/files/2023song5.mp3') },
-  { audio_id: 6, user_id: 8, comment: "もう少しテンポ遅い方がいいね" },
-  { audio_id: 7, user_id: 3, comment: "一旦お蔵入り" }
-]
+# responses = [
+#   { audio_id: 5, user_id: 5, comment: "オッケー!耳コピしとく" },
+#   { audio_id: 5, user_id: 6, comment: "ドラムだけの音声もらえる?" },
+#   { audio_id: 5, user_id: 3, comment: "送る！", file: File.open('./app/assets/files/2023song5.mp3') },
+#   { audio_id: 6, user_id: 8, comment: "もう少しテンポ遅い方がいいね" },
+#   { audio_id: 7, user_id: 3, comment: "一旦お蔵入り" }
+# ]
 
-responses.each do |response|
-  Response.create!(response)
-end
+# responses.each do |response|
+#   Response.create!(response)
+# end
