@@ -16,11 +16,9 @@ class AudiosController < ApplicationController
   end
 
   def create
-    applemusic = params[:audio][:reference]
-    applemusic.slice!(0,23)
     @audio = current_user.audios.build(audio_params)
     @project = Project.find(params[:audio][:project_id])
-    @audio.reference = applemusic
+    cut_url_reference_form
 
     if @audio.save
       redirect_to audios_path(project_id: @audio.project_id), notice: "アップロードしました"
@@ -38,9 +36,7 @@ class AudiosController < ApplicationController
   end
 
   def update
-    applemusic = params[:audio][:reference]
-    applemusic.slice!(0,23)
-    @audio.reference = applemusic
+    cut_url_reference_form
 
     if @audio.update(audio_params)
       redirect_to audios_path(project_id: @audio.project_id), notice: "編集しました"
@@ -94,5 +90,11 @@ class AudiosController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to audios_path(project_id: @audio.project_id)
     end
+  end
+
+  def cut_url_reference_form
+    applemusic = params[:audio][:reference]
+    applemusic.slice!(0,23)
+    @audio.reference = applemusic
   end
 end
